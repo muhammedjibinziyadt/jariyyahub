@@ -1,0 +1,71 @@
+/* Hide the default cursor ONLY on desktop devices (non-touch screens) */
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+  body {
+    cursor: none;
+  }
+
+  /* Hide cursor on clickable elements too */
+  a,
+  button,
+  input,
+  [data-hover="true"],
+  select,
+  textarea {
+    cursor: none !important;
+  }
+}
+
+/* Show default cursor on mobile/touch devices */
+@media (hover: none) or (pointer: coarse) or (max-width: 767px) {
+  body {
+    cursor: auto;
+  }
+
+  /* Ensure cursor shows on clickable elements on mobile */
+  a,
+  button,
+  input,
+  [data-hover="true"] {
+    cursor: pointer;
+  }
+}
+
+/* Container for cursor elements */
+.neon-cursor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  /* Makes it visible on dark/light backgrounds */
+}
+
+/* Main cursor dot */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+}
+
+/* Follower ring */
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border: 1px solid white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  will-change: transform;
+}

@@ -145,7 +145,35 @@ export default function DonatePage() {
             setFormData(prev => ({ ...prev, donationId }))
 
             // 1. Launch the UPI app link
-            const upiUrl = `upi://pay?pa=123456@sbi&pn=JawharathulUloomSuffaDars&cu=INR&am=${formData.amount}&url=${encodeURIComponent(window.location.origin + '/donate')}`
+            const baseParams = `pa=123456@sbi&pn=JawharathulUloomSuffaDars&cu=INR&am=${formData.amount}&url=${encodeURIComponent(window.location.origin + '/donate')}`
+            let upiUrl = `upi://pay?${baseParams}`
+
+            if (typeof window !== 'undefined') {
+                const ua = navigator.userAgent || navigator.vendor || (window as any).opera
+                const isAndroid = /android/i.test(ua)
+                const isIos = /iPad|iPhone|iPod/.test(ua) && !(window as any).MSStream
+
+                if (selectedApp === 'gpay') {
+                    if (isAndroid) {
+                        upiUrl = `intent://pay?${baseParams}#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end;`
+                    } else if (isIos) {
+                        upiUrl = `gpay://upi/pay?${baseParams}`
+                    }
+                } else if (selectedApp === 'phonepe') {
+                    if (isAndroid) {
+                        upiUrl = `intent://pay?${baseParams}#Intent;scheme=upi;package=com.phonepe.app;end;`
+                    } else if (isIos) {
+                        upiUrl = `phonepe://pay?${baseParams}`
+                    }
+                } else if (selectedApp === 'paytm') {
+                    if (isAndroid) {
+                        upiUrl = `intent://pay?${baseParams}#Intent;scheme=upi;package=net.one97.paytm;end;`
+                    } else if (isIos) {
+                        upiUrl = `paytmmp://pay?${baseParams}`
+                    }
+                }
+            }
+
             window.location.href = upiUrl
             
             // Set waiting state so focus handler will trigger modal when user switches back to browser

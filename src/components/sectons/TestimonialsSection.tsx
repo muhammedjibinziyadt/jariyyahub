@@ -11,35 +11,35 @@ const placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/200
 const testimonials = [
   {
     id: 1,
-    name: "Abdullah Rahman",
-    role: "Alumni, Class of 2023",
+    name: "Prophet Muhammad ﷺ",
+    role: "Sahih Muslim: 2588",
     image: placeholderImage,
-    quote: "Noorul Ulama shaped not just my academic journey but my character. The values I learned here guide me in every aspect of life. The mentorship and brotherhood I experienced are invaluable.",
-    achievement: "Masters in Islamic Studies"
+    quote: "قَالَ رَسُولُ اللَّهِ ﷺ:\n\nمَا نَقَصَتْ صَدَقَةٌ مِنْ مَالٍ، وَمَا زَادَ اللَّهُ عَبْدًا بِعَفْوٍ إِلَّا عِزًّا، وَمَا تَوَاضَعَ أَحَدٌ لِلَّهِ إِلَّا رَفَعَهُ اللَّهُ.\n\nറസൂലുല്ലാഹ് ﷺ അരുളിച്ചെയ്തു:\n\"സ്വദഖ നൽകുന്നതിലൂടെ ഒരാളുടെ സമ്പത്ത് കുറയുകയില്ല. ക്ഷമിക്കുന്നവന് അല്ലാഹു കൂടുതൽ മഹത്വം നൽകും. അല്ലാഹുവിനുവേണ്ടി വിനയപ്പെടുന്നവനെ അല്ലാഹു ഉയർത്തും.\"",
+    achievement: "Hadith on Charity & Humility"
   },
   {
     id: 2,
-    name: "Muhammed Favas",
-    role: "Student, Literature Wing",
+    name: "Prophet Muhammad ﷺ",
+    role: "Sahih al-Bukhari: 1417",
     image: placeholderImage,
-    quote: "Being part of the Literature Wing has unleashed my creative potential. The supportive environment and excellent guidance have helped me publish my first collection of poems.",
-    achievement: "Published Author"
+    quote: "قَالَ رَسُولُ اللَّهِ ﷺ:\n\nاتَّقُوا النَّارَ وَلَوْ بِشِقِّ تَمْرَةٍ.\n\nറസൂലുല്ലാഹ് ﷺ അരുളിച്ചെയ്തു:\n\"ഒരു ഈന്തപ്പഴത്തിന്റെ പകുതി ദാനം ചെയ്തുകൊണ്ടെങ്കിലും നരകാഗ്നിയിൽ നിന്ന് നിങ്ങളെത്തന്നെ സംരക്ഷിക്കുവിൻ.\"",
+    achievement: "Hadith on Protection from Hellfire"
   },
   {
     id: 3,
-    name: "Dr. Hassan Ali",
-    role: "Faculty Member",
+    name: "Prophet Muhammad ﷺ",
+    role: "Sahih al-Bukhari: 6021",
     image: placeholderImage,
-    quote: "Working with Noorul Ulama students is inspiring. Their dedication to learning, combined with strong moral values, makes them exceptional individuals who contribute positively to society.",
-    achievement: "Professor"
+    quote: "قَالَ رَسُولُ اللَّهِ ﷺ:\n\nكُلُّ مَعْرُوفٍ صَدَقَةٌ.\n\nറസൂലുല്ലാഹ് ﷺ അരുളിച്ചെയ്തു:\n\"എല്ലാ സൽപ്രവൃത്തികളും സ്വദഖയാണ്.\"",
+    achievement: "Hadith on Good Deeds"
   },
   {
     id: 4,
-    name: "Omar Khalil",
-    role: "Alumni, Class of 2022",
+    name: "Prophet Muhammad ﷺ",
+    role: "Sahih Muslim: 1631",
     image: placeholderImage,
-    quote: "The community service initiatives taught me the importance of giving back. The skills and values I gained here helped me establish my own NGO for educational support.",
-    achievement: "Social Entrepreneur"
+    quote: "قَالَ رَسُولُ اللَّهِ ﷺ:\n\nإِذَا مَاتَ الْإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلَّا مِنْ ثَلَاثٍ: صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ.\n\nറസൂലുല്ലാഹ് ﷺ അരുളിച്ചെയ്തു:\n\"മനുഷ്യൻ മരിച്ചാൽ അവന്റെ പ്രവൃത്തികൾ അവസാനിക്കുന്നു. എന്നാൽ മൂന്ന് കാര്യങ്ങൾ ഒഴികെ: തുടർന്നുകൊണ്ടിരിക്കുന്ന സ്വദഖ (സ്വദഖ ജാരിയ), പ്രയോജനപ്പെടുന്ന വിജ്ഞാനം, അല്ലെങ്കിൽ അവനുവേണ്ടി പ്രാർത്ഥിക്കുന്ന സദ്സന്താനം.\"",
+    achievement: "Hadith on Ongoing Charity (Sadaqah Jariyah)"
   }
 ]
 
@@ -54,7 +54,7 @@ const TestimonialsSection = () => {
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-            VOICE OF <span className="text-emerald-600">NOORUL ULAMA</span>
+            HADEES <span className="text-emerald-600">QUOTES</span>
           </h2>
         </div>
 
@@ -70,8 +70,8 @@ const TestimonialsSection = () => {
                 className="text-center max-w-3xl px-6"
               >
                 <Quote className="w-12 h-12 mx-auto text-emerald-500/20 mb-8" />
-                <blockquote className="text-xl sm:text-2xl md:text-3xl font-light leading-relaxed text-slate-800 dark:text-slate-200 mb-10">
-                  "{testimonials[currentIndex].quote}"
+                <blockquote className="text-xl sm:text-2xl md:text-3xl font-light leading-relaxed text-slate-800 dark:text-slate-200 mb-10 whitespace-pre-line font-arabic-and-malayalam">
+                  {testimonials[currentIndex].quote}
                 </blockquote>
                 <div className="flex flex-col items-center gap-4">
                   <div className="w-16 h-16 relative rounded-full overflow-hidden bg-emerald-100">

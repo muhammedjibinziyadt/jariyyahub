@@ -78,18 +78,18 @@ const AlMuneerBookingModal = ({ onClose }: Props) => {
             // REPLACE THIS URL with your deployed Google Apps Script Web App URL
             const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || ''
 
-            if (!GOOGLE_SCRIPT_URL) {
-                throw new Error("Google Script URL is missing")
+            if (GOOGLE_SCRIPT_URL) {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                })
+            } else {
+                console.warn("NEXT_PUBLIC_GOOGLE_SCRIPT_URL is not set. Skipping spreadsheet logging.")
             }
-
-            await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            })
 
             // Since we can't check response.ok in no-cors, we proceed to next step
             setStep(4)

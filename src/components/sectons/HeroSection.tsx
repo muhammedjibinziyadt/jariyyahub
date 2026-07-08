@@ -13,7 +13,8 @@ import {
   Sparkles,
   Award,
   GraduationCap,
-  Bell
+  Bell,
+  Target
 } from 'lucide-react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -90,6 +91,78 @@ const HeroSection = () => {
                 Watch Story
               </button>
             </a>
+          </div>
+
+          {/* Donation Progress Card */}
+          <div className="w-full max-w-3xl mx-auto pt-6 text-left">
+            <div className="bg-card/45 dark:bg-slate-900/40 backdrop-blur-md border border-border/60 shadow-xl rounded-3xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+              {/* Left side (Progress) */}
+              <div className="flex flex-col sm:flex-row items-center gap-5 flex-1 w-full">
+                {/* Circular Progress */}
+                <div className="relative w-20 h-20 flex-shrink-0">
+                  <svg className="w-full h-full transform -rotate-90">
+                    <circle
+                      cx="40"
+                      cy="40"
+                      r="33"
+                      stroke="currentColor"
+                      strokeWidth="5"
+                      fill="transparent"
+                      className="text-slate-100 dark:text-slate-800/80"
+                    />
+                    <circle
+                      cx="40"
+                      cy="40"
+                      r="33"
+                      stroke="#8b5cf6"
+                      strokeWidth="5"
+                      fill="transparent"
+                      strokeDasharray={2 * Math.PI * 33}
+                      strokeDashoffset={2 * Math.PI * 33 * (1 - 0.18)}
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-lg font-black text-slate-800 dark:text-slate-100">18%</span>
+                  </div>
+                </div>
+
+                {/* Text and Horizontal Progress */}
+                <div className="space-y-2 flex-1 w-full text-center sm:text-left">
+                  <h4 className="text-base md:text-lg font-bold text-slate-800 dark:text-slate-200 font-malayalam">
+                    പണിയുടെ പുരോഗതി
+                  </h4>
+                  <div className="w-full h-2.5 bg-slate-100 dark:bg-slate-800/80 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-gradient-to-r from-violet-500 to-purple-600 rounded-full" 
+                      style={{ width: '18%' }}
+                    />
+                  </div>
+                  <p className="text-xs md:text-sm font-semibold text-slate-500 dark:text-slate-400 font-malayalam">
+                    18% പൂർത്തിയായി
+                  </p>
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="hidden md:block w-[1px] h-14 border-l border-dashed border-border" />
+              <div className="block md:hidden w-full h-[1px] border-t border-dashed border-border" />
+
+              {/* Right side (Goal) */}
+              <div className="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto">
+                <div className="text-left md:text-right space-y-0.5">
+                  <span className="text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 font-bold font-malayalam block">
+                    ലക്ഷ്യം
+                  </span>
+                  <h3 className="text-2xl font-black text-violet-600 dark:text-violet-400 tracking-wide">
+                    ₹2,00,000
+                  </h3>
+                </div>
+                <div className="w-12 h-12 rounded-full bg-violet-100/60 dark:bg-violet-950/40 flex items-center justify-center text-violet-600 dark:text-violet-400 flex-shrink-0">
+                  <Target className="w-6 h-6" />
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

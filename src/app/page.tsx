@@ -1,7 +1,5 @@
-import FacultySection from "@/components/sectons/FacultySection";
 import AboutSection from "@/components/sectons/AboutSection";
 import HeroSection from "@/components/sectons/HeroSection";
-import StatsSection from "@/components/sectons/StatsSection";
 import CTASection from "@/components/sectons/CTASection";
 import TestimonialsSection from "@/components/sectons/TestimonialsSection";
 import BannerSection from "@/components/sectons/BannerSection";
@@ -19,8 +17,6 @@ export default function Home() {
       <HeroSection />
       <BannerSection />
       <AboutSection />
-      <StatsSection />
-      <FacultySection />
       <TestimonialsSection />
       <CTASection />
     </main>

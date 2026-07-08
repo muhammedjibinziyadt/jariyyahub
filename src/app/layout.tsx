@@ -164,7 +164,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* DNS Prefetch for external resources */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&family=Manjari:wght@100;400;700&family=Gayathri:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&family=Manjari:wght@100;400;700&family=Gayathri:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Kufi+Arabic:wght@100..900&family=Anek+Malayalam:wght@100..800&display=swap" rel="stylesheet" />
       </head>
       <body
         className={`${outfit.variable} ${playfair.variable} antialiased bg-background text-foreground`}

@@ -121,11 +121,6 @@ export default function DonatePage() {
         try {
             const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
 
-            if (!GOOGLE_SCRIPT_URL) {
-                alert("Configuration Error: Google Script URL is missing.")
-                return
-            }
-
             const donationId = `DON-${Math.floor(100000 + Math.random() * 900000)}`
             const finalData = {
                 bookingId: donationId,
@@ -180,14 +175,18 @@ export default function DonatePage() {
             setIsWaitingForPayment(true)
 
             // 2. Log payment details in background spreadsheet
-            await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(finalData),
-            })
+            if (GOOGLE_SCRIPT_URL) {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(finalData),
+                })
+            } else {
+                console.warn("NEXT_PUBLIC_GOOGLE_SCRIPT_URL is not set. Skipping spreadsheet logging.")
+            }
 
         } catch (error) {
             console.error('Submission error:', error)

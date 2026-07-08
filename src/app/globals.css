@@ -243,4 +243,20 @@
     word-spacing: normal !important;
     font-variant-ligatures: common-ligatures !important;
   }
+
+  /* Ensure proper font rendering for Arabic text */
+  .font-arabic, [lang="ar"], html[lang="ar"] * {
+    font-family: "Amiri", "Noto Naskh Arabic", "Times New Roman", serif !important;
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+    font-variant-ligatures: common-ligatures !important;
+  }
+
+  /* Mixed script font stack for Arabic and Malayalam text side-by-side */
+  .font-arabic-and-malayalam {
+    font-family: "Noto Kufi Arabic", "Anek Malayalam", sans-serif !important;
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+    font-variant-ligatures: common-ligatures !important;
+  }
 }

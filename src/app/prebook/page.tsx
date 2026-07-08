@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Check, Home, Download, Printer } from 'lucide-react'
 import Link from 'next/link'
 import { toPng } from 'html-to-image'
@@ -22,6 +22,19 @@ interface BookingData {
 
 const AlMuneerBookingPage = () => {
     const [step, setStep] = useState(1)
+    const [settingsUpi, setSettingsUpi] = useState('123456@sbi')
+
+    useEffect(() => {
+        fetch('/api/settings')
+            .then(res => res.json())
+            .then(data => {
+                if (data.success && data.data && data.data.upiId) {
+                    setSettingsUpi(data.data.upiId)
+                }
+            })
+            .catch(err => console.error('Failed to load settings:', err))
+    }, [])
+
     const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState<BookingData>({
         name: '',
@@ -501,10 +514,10 @@ const AlMuneerBookingPage = () => {
                                                 </div>
                                             </div>
                                             <a
-                                                href={`upi://pay?pa=123456@sbi&pn=AlMuneer&cu=INR&am=${totalAmount}`}
+                                                href={`upi://pay?pa=${settingsUpi}&pn=AlMuneer&cu=INR&am=${totalAmount}`}
                                                 className="block text-emerald-600 font-medium mb-4 md:mb-6 hover:underline break-all text-sm md:text-base"
                                             >
-                                                123456@sbi
+                                                {settingsUpi}
                                             </a>
                                             <div className="text-slate-500 text-sm mb-1">Total Amount</div>
                                             <div className="text-3xl md:text-4xl font-black text-emerald-600 mb-2">

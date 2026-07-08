@@ -20,6 +20,29 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const HeroSection = () => {
+  const [settings, setSettings] = useState({
+    targetAmount: 0,
+    raisedAmount: 0,
+  })
+
+  useEffect(() => {
+    fetch('/api/settings')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.data) {
+          setSettings({
+            targetAmount: data.data.targetAmount !== undefined && data.data.targetAmount !== null ? Number(data.data.targetAmount) : 0,
+            raisedAmount: data.data.raisedAmount !== undefined && data.data.raisedAmount !== null ? Number(data.data.raisedAmount) : 0,
+          })
+        }
+      })
+      .catch(err => console.error('Failed to load settings:', err))
+  }, [])
+
+  const percentage = settings.targetAmount > 0 
+    ? Math.min(100, Math.round((settings.raisedAmount / settings.targetAmount) * 100))
+    : 0
+
   const notifications = [
     "Admission Open 2025-26: Apply Now for Academic Excellence",
     "Results Published: Check the Student Leaderboard for Latest Updates",
@@ -118,12 +141,12 @@ const HeroSection = () => {
                       strokeWidth="5"
                       fill="transparent"
                       strokeDasharray={2 * Math.PI * 33}
-                      strokeDashoffset={2 * Math.PI * 33 * (1 - 0.18)}
+                      strokeDashoffset={2 * Math.PI * 33 * (1 - percentage / 100)}
                       strokeLinecap="round"
                     />
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-lg font-black text-slate-800 dark:text-slate-100">18%</span>
+                    <span className="text-lg font-black text-slate-800 dark:text-slate-100">{percentage}%</span>
                   </div>
                 </div>
 
@@ -135,11 +158,11 @@ const HeroSection = () => {
                   <div className="w-full h-2.5 bg-slate-100 dark:bg-slate-800/80 rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-gradient-to-r from-violet-500 to-purple-600 rounded-full" 
-                      style={{ width: '18%' }}
+                      style={{ width: `${percentage}%` }}
                     />
                   </div>
                   <p className="text-xs md:text-sm font-semibold text-slate-500 dark:text-slate-400 font-malayalam">
-                    18% പൂർത്തിയായി
+                    {percentage}% പൂർത്തിയായി
                   </p>
                 </div>
               </div>
@@ -155,7 +178,7 @@ const HeroSection = () => {
                     ലക്ഷ്യം
                   </span>
                   <h3 className="text-2xl font-black text-violet-600 dark:text-violet-400 tracking-wide">
-                    ₹2,00,000
+                    ₹{settings.targetAmount.toLocaleString('en-IN')}
                   </h3>
                 </div>
                 <div className="w-12 h-12 rounded-full bg-violet-100/60 dark:bg-violet-950/40 flex items-center justify-center text-violet-600 dark:text-violet-400 flex-shrink-0">

@@ -5,30 +5,30 @@ import { breadcrumbSchema } from "@/lib/structured-data";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://noorululama.org';
 
 export const metadata: Metadata = {
-  title: "Core Committee",
-  description: "Meet the dedicated leaders of Noorul Ulama Students Association. Our core committee works tirelessly to serve the student community and uphold Islamic values and educational excellence.",
-  keywords: ["core committee", "leadership", "student leaders", "Noorul Ulama", "president", "secretary"],
+  title: "Official Website | Jariyya Hub",
+  description: "Explore the official platform of Jawharathul Uloom Suffa Dars at www.jawharathululoomsuffadars.online.",
+  keywords: ["official website", "live platform", "Jawharathul Uloom", "Suffa Dars", "Jariyya Hub"],
   alternates: {
     canonical: `${siteUrl}/core`,
   },
   openGraph: {
-    title: "Core Committee | Noorul Ulama Leadership Team",
-    description: "Meet our dedicated student leaders serving the Noorul Ulama community",
+    title: "Official Website | Jariyya Hub",
+    description: "Explore the official platform of Jawharathul Uloom Suffa Dars.",
     url: `${siteUrl}/core`,
     type: "website",
     images: [
       {
-        url: `${siteUrl}/og-core.jpg`,
+        url: `${siteUrl}/images/site_preview.png`,
         width: 1200,
         height: 630,
-        alt: "Noorul Ulama Core Committee",
+        alt: "Jawharathul Uloom Suffa Dars Website Preview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Core Committee | Noorul Ulama",
-    description: "Meet our dedicated student leadership team",
+    title: "Official Website | Jariyya Hub",
+    description: "Explore the official platform of Jawharathul Uloom Suffa Dars.",
   },
 };
 

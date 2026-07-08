@@ -2,14 +2,15 @@
 'use client';
 
 import { useState } from 'react';
-import { LogOut, Activity, Megaphone, Image as ImageIcon, Home as HomeIcon } from 'lucide-react';
+import { LogOut, Activity, Megaphone, Image as ImageIcon, Home as HomeIcon, LayoutDashboard } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import AnnouncementManager from '@/components/admin/AnnouncementManager';
 import BannerManager from '@/components/admin/BannerManager';
+import DashboardOverview from '@/components/admin/DashboardOverview';
 
 export default function AdminDashboard() {
-    const [activeTab, setActiveTab] = useState<'announcements' | 'banners'>('announcements');
+    const [activeTab, setActiveTab] = useState<'overview' | 'announcements' | 'banners'>('overview');
     const router = useRouter();
 
     const handleLogout = () => {
@@ -30,6 +31,16 @@ export default function AdminDashboard() {
                             <HomeIcon className="w-4 h-4" /> Home
                         </Link>
                         <div className="flex bg-slate-950 p-1 rounded-lg border border-slate-800">
+                            <button
+                                onClick={() => setActiveTab('overview')}
+                                className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-sm transition-all ${activeTab === 'overview'
+                                    ? 'bg-slate-800 text-white shadow-lg'
+                                    : 'text-slate-500 hover:text-slate-300'
+                                    }`}
+                            >
+                                <LayoutDashboard className="w-4 h-4" />
+                                Overview
+                            </button>
                             <button
                                 onClick={() => setActiveTab('announcements')}
                                 className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-sm transition-all ${activeTab === 'announcements'
@@ -59,9 +70,13 @@ export default function AdminDashboard() {
             </nav>
 
             <main className="container mx-auto p-4 sm:p-8">
-                {activeTab === 'announcements' ? (
+                {activeTab === 'overview' && (
+                    <DashboardOverview />
+                )}
+                {activeTab === 'announcements' && (
                     <AnnouncementManager />
-                ) : (
+                )}
+                {activeTab === 'banners' && (
                     <BannerManager />
                 )}
             </main>

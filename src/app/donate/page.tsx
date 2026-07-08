@@ -23,6 +23,18 @@ export default function DonatePage() {
     const [isWaitingForPayment, setIsWaitingForPayment] = useState(false)
     const [showStatusConfirm, setShowStatusConfirm] = useState(false)
     const [paymentFailed, setPaymentFailed] = useState(false)
+    const [settingsUpi, setSettingsUpi] = useState('123456@sbi')
+
+    useEffect(() => {
+        fetch('/api/settings')
+            .then(res => res.json())
+            .then(data => {
+                if (data.success && data.data && data.data.upiId) {
+                    setSettingsUpi(data.data.upiId)
+                }
+            })
+            .catch(err => console.error('Failed to load settings:', err))
+    }, [])
 
     useEffect(() => {
         const handleFocus = () => {
@@ -140,7 +152,7 @@ export default function DonatePage() {
             setFormData(prev => ({ ...prev, donationId }))
 
             // 1. Launch the UPI app link
-            const baseParams = `pa=123456@sbi&pn=JawharathulUloomSuffaDars&cu=INR&am=${formData.amount}&url=${encodeURIComponent(window.location.origin + '/donate')}`
+            const baseParams = `pa=${settingsUpi}&pn=JawharathulUloomSuffaDars&cu=INR&am=${formData.amount}&url=${encodeURIComponent(window.location.origin + '/donate')}`
             let upiUrl = `upi://pay?${baseParams}`
 
             if (typeof window !== 'undefined') {
@@ -213,7 +225,7 @@ export default function DonatePage() {
     }
 
     const copyToClipboard = () => {
-        navigator.clipboard.writeText('123456@sbi')
+        navigator.clipboard.writeText(settingsUpi)
         setCopiedUpi(true)
         setTimeout(() => setCopiedUpi(false), 2000)
     }

@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     "Jariya Hub",
     "jawharathul uloom dars",
     "Islamic Education",
-    "Pattikkad",
+    "donation",
     "Student Association",
     "Kerala Islamic Education",
     "Malappuram",

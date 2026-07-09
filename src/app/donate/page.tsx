@@ -221,7 +221,7 @@ export default function DonatePage() {
     const handlePaymentSuccess = () => {
         setIsWaitingForPayment(false)
         setShowStatusConfirm(false)
-        setStep(3)
+        window.location.href = `/donate/poster?name=${encodeURIComponent(formData.name)}&amount=${formData.amount}&id=${formData.donationId || ''}`
     }
 
     const handlePaymentFailed = () => {

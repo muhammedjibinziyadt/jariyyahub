@@ -56,7 +56,7 @@ export default function Header() {
                             />
                         </div>
                         <span className="font-bold text-lg md:text-xl text-slate-900 dark:text-white tracking-tight group-hover:text-emerald-600 transition-colors">
-                            Jariyya Hub
+                            Jariya Hub
                         </span>
                     </Link>
 

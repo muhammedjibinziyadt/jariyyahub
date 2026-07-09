@@ -3,7 +3,7 @@ import { verifyAuth } from '@/lib/auth';
 import { db, isFirebaseConfigured } from '@/lib/firebase';
 import { doc, updateDoc, deleteDoc } from 'firebase/firestore';
 
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
   if (!isFirebaseConfigured) {
     return NextResponse.json({ success: false, error: 'Firebase is not configured' }, { status: 503 });
   }
@@ -12,7 +12,7 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
   if (!isAuthenticated) return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
 
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await req.json();
     const docRef = doc(db, 'about_cards', id);
 
@@ -32,7 +32,7 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
   }
 }
 
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
   if (!isFirebaseConfigured) {
     return NextResponse.json({ success: false, error: 'Firebase is not configured' }, { status: 503 });
   }
@@ -41,7 +41,7 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
   if (!isAuthenticated) return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
 
   try {
-    const { id } = params;
+    const { id } = await params;
     const docRef = doc(db, 'about_cards', id);
     await deleteDoc(docRef);
 

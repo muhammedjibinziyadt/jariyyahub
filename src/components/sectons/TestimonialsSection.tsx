@@ -75,7 +75,7 @@ const TestimonialsSection = () => {
                     <p className="text-lg sm:text-xl md:text-2xl font-arabic text-emerald-600 dark:text-emerald-400 font-medium">
                       {testimonials[currentIndex].quote.split('\n\n')[0]}
                     </p>
-                    <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-arabic leading-[1.25] text-slate-900 dark:text-white">
+                    <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-arabic leading-[1.65] sm:leading-[1.5] md:leading-[1.4] text-slate-900 dark:text-white">
                       {testimonials[currentIndex].quote.split('\n\n')[1]}
                     </p>
                   </div>

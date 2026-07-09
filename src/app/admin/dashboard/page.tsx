@@ -2,14 +2,15 @@
 'use client';
 
 import { useState } from 'react';
-import { LogOut, Activity, Home as HomeIcon, LayoutDashboard, Video, Menu, X } from 'lucide-react';
+import { LogOut, Activity, Home as HomeIcon, LayoutDashboard, Video, Menu, X, LayoutList } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import DashboardOverview from '@/components/admin/DashboardOverview';
 import MediaManager from '@/components/admin/MediaManager';
+import AboutCardsManager from '@/components/admin/AboutCardsManager';
 
 export default function AdminDashboard() {
-    const [activeTab, setActiveTab] = useState<'overview' | 'media'>('overview');
+    const [activeTab, setActiveTab] = useState<'overview' | 'media' | 'about-cards'>('overview');
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const router = useRouter();
 
@@ -53,6 +54,17 @@ export default function AdminDashboard() {
                             >
                                 <Video className="w-4 h-4" />
                                 Media Gallery
+                            </button>
+
+                            <button
+                                onClick={() => setActiveTab('about-cards')}
+                                className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-sm transition-all ${activeTab === 'about-cards'
+                                    ? 'bg-slate-800 text-white shadow-lg'
+                                    : 'text-slate-500 hover:text-slate-300'
+                                    }`}
+                            >
+                                <LayoutList className="w-4 h-4" />
+                                About Cards
                             </button>
                         </div>
                         <button onClick={handleLogout} className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
@@ -108,6 +120,19 @@ export default function AdminDashboard() {
                                 <Video className="w-4 h-4" />
                                 Media Gallery
                             </button>
+                            <button
+                                onClick={() => {
+                                    setActiveTab('about-cards');
+                                    setMobileMenuOpen(false);
+                                }}
+                                className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm w-full transition-all ${activeTab === 'about-cards'
+                                    ? 'bg-slate-800 text-white shadow-lg'
+                                    : 'bg-slate-950 text-slate-400 hover:text-slate-305 hover:bg-slate-900 border border-slate-800'
+                                    }`}
+                            >
+                                <LayoutList className="w-4 h-4" />
+                                About Cards
+                            </button>
                         </div>
                         
                         <button 
@@ -130,6 +155,10 @@ export default function AdminDashboard() {
 
                 {activeTab === 'media' && (
                     <MediaManager />
+                )}
+
+                {activeTab === 'about-cards' && (
+                    <AboutCardsManager />
                 )}
             </main>
         </div>

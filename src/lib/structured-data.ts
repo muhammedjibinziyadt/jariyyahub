@@ -24,7 +24,7 @@ export const organizationSchema = {
     '@type': 'ContactPoint',
     telephone: '+91-828010-2606',
     contactType: 'General Inquiries',
-    email: 'jariyahu@gmail.com',
+    email: 'jariyahub@gmail.com',
     availableLanguage: ['English', 'Malayalam', 'Arabic'],
   },
   sameAs: [

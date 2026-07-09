@@ -4,24 +4,32 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
+import { useEffect, useState } from 'react'
+
+interface AboutCard {
+  _id: string;
+  image: string;
+  title: string;
+  description: string;
+}
+
 const AboutSection = () => {
-  const cards = [
-    {
-      image: "/images/computer_lab.png",
-      title: "ആധുനിക കമ്പ്യൂട്ടർ ലാബ്",
-      description: "വിദ്യാർത്ഥികൾക്ക് ഡിജിറ്റൽ മേഖലയിൽ മികച്ച കമ്പ്യൂട്ടർ പഠന സൗകര്യം"
-    },
-    {
-      image: "/images/library.png",
-      title: "വിശാലമായ ലൈബ്രറി",
-      description: "പഠനത്തിനും ഗവേഷണത്തിനും ഉപയോഗപ്രദമായ മികച്ച പുസ്തകശേഖരം"
-    },
-    {
-      image: "/images/students_classroom.png",
-      title: "ദീനി & ആധുനിക വിദ്യാഭ്യാസം",
-      description: "ദീനി, ലൗകിക വിദ്യാഭ്യാസം ഉയർന്ന നിലവാരത്തിൽ"
+  const [cards, setCards] = useState<AboutCard[]>([])
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const res = await fetch('/api/about-cards')
+        const data = await res.json()
+        if (data.success) {
+          setCards(data.data)
+        }
+      } catch (error) {
+        console.error('Failed to fetch about cards:', error)
+      }
     }
-  ]
+    fetchCards()
+  }, [])
 
   return (
     <section className="relative py-20 md:py-28 bg-slate-50 dark:bg-slate-950/20 overflow-hidden">

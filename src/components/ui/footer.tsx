@@ -42,7 +42,7 @@ export default function Footer() {
                                 { icon: Facebook, href: "https://www.facebook.com/jariyyahub" },
                                 { icon: Instagram, href: "https://www.instagram.com/jariyyahub" },
                                 { icon: Youtube, href: "https://www.youtube.com/jariyyahub" },
-                                { icon: MessageCircle, href: "https://wa.me/919647070200" },
+                                { icon: MessageCircle, href: "https://wa.me/918281102606" },
                             ].map((social, idx) => (
                                 <a
                                     key={idx}
@@ -75,23 +75,6 @@ export default function Footer() {
                                 ))}
                             </ul>
                         </div>
-                        <div>
-                            <h4 className="font-bold text-slate-900 dark:text-white mb-6">Resources</h4>
-                            <ul className="space-y-3">
-                                {[
-                                    { label: "Blog", href: "#" },
-                                    { label: "Events", href: "#" },
-                                    { label: "Gallery", href: "#" },
-                                    { label: "Donate", href: "#" }
-                                ].map((item, i) => (
-                                    <li key={i}>
-                                        <Link href={item.href} className="text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors">
-                                            {item.label}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
                     </div>
 
                     <div className="lg:col-span-4 space-y-6">
@@ -103,15 +86,15 @@ export default function Footer() {
                                 </div>
                                 <div className="text-sm">
                                     <p className="text-slate-900 dark:text-white font-medium">Jariya Hub</p>
-                                    <p className="text-slate-500 dark:text-slate-400 mt-1">Faizabad, Pattikkad PO<br />Malappuram, Kerala 679325</p>
+                                    <p className="text-slate-500 dark:text-slate-400 mt-1">Pulpatta PO<br />Malappuram, Kerala 679325</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-4">
                                 <div className="p-2.5 bg-emerald-50 dark:bg-slate-900 rounded-lg text-emerald-600">
                                     <Mail className="w-5 h-5" />
                                 </div>
-                                <a href="mailto:jamianooriya@gmail.com" className="text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors">
-                                    jamianooriya@gmail.com
+                                <a href="mailto:jariyahub@gmail.com" className="text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors">
+                                    jariyahub@gmail.com
                                 </a>
                             </div>
                             <div className="flex items-center gap-4">
@@ -119,7 +102,7 @@ export default function Footer() {
                                     <Phone className="w-5 h-5" />
                                 </div>
                                 <div className="text-sm text-slate-600 dark:text-slate-400">
-                                    +91 96470 70200
+                                    +91 8281102606
                                 </div>
                             </div>
                         </div>

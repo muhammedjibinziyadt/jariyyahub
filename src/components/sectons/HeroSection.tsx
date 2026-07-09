@@ -51,7 +51,7 @@ const HeroSection = () => {
   ]
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center bg-background overflow-hidden selection:bg-emerald-500/20">
+    <section className="relative min-h-screen flex flex-col justify-center items-center bg-background overflow-hidden selection:bg-emerald-500/20 pt-28 md:pt-36 pb-16">
       {/* Subtle Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
@@ -89,7 +89,7 @@ const HeroSection = () => {
           <div className="space-y-4">
             <h2 className="text-2xl md:text-3xl font-medium text-emerald-600/80 dark:text-emerald-400/80 font-arabic tracking-wide">
               Jariyya Hub            </h2>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground tracking-normal leading-[1.3] font-malayalam">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground tracking-normal leading-[1.15] font-malayalam">
               വിജ്ഞാനത്തിന്റെ പാതയിൽ <span className="text-transparent bg-clip-text bg-gradient-to-b from-foreground to-foreground/50 font-malayalam">ഒരു കൈത്താങ്ങാകാം</span>
             </h1>
           </div>
@@ -103,17 +103,11 @@ const HeroSection = () => {
           {/* Simple Actions */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Link href="/donate">
-              <button className="h-12 px-8 rounded-full bg-foreground text-background font-medium hover:bg-foreground/90 transition-colors flex items-center gap-2">
+              <button className="h-12 px-8 rounded-full bg-foreground text-background font-medium hover:bg-foreground/90 transition-colors flex items-center gap-2 cursor-pointer">
                 Donate Now
                 <ArrowRight className="w-4 h-4" />
               </button>
             </Link>
-            <a href="https://youtu.be/FxE9tuhbrUk" target="_blank" rel="noopener noreferrer">
-              <button className="h-12 px-8 rounded-full bg-secondary/50 hover:bg-secondary transition-colors font-medium text-foreground flex items-center gap-2">
-                <Play className="w-4 h-4 fill-current" />
-                Watch Story
-              </button>
-            </a>
           </div>
 
           {/* Donation Progress Card */}

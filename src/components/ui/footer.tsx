@@ -63,7 +63,7 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Navigation Links - Spans 3 Columns */}
+                    {/* Navigation Links - Spans 3 Column ie3wi3ii3re03ir30riir3 di*/}
                     <div className="lg:col-span-3">
                         <span className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-6 block">
                             Navigation

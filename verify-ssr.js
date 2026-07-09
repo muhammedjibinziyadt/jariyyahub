@@ -12,7 +12,7 @@ console.log('\n🔍 Verifying SSR Configuration...\n');
 // Configuration
 const PORT = 3000;
 const HOST = 'localhost';
-const ROUTES = ['/', '/contact', '/core', '/subwing'];
+const ROUTES = ['/', '/contact', '/core'];
 
 function checkSSR(path) {
   return new Promise((resolve, reject) => {
@@ -36,10 +36,10 @@ function checkSSR(path) {
       res.on('end', () => {
         // Check if response contains actual HTML content
         const hasHtml = data.includes('<!DOCTYPE html>');
-        const hasContent = data.includes('Jariyya Hub') || data.includes('نور العلماء');
+        const hasContent = data.includes('Jariya Hub') || data.includes('Jariya Hub');
         const hasMetaTags = data.includes('<meta name="description"');
         const hasTitle = data.includes('<title>');
-        
+
         // Check that it's not just an empty shell
         const notEmptyShell = data.length > 1000;
 
@@ -73,14 +73,14 @@ function checkSSR(path) {
 
 async function verifyAllRoutes() {
   console.log(`📡 Checking server at http://${HOST}:${PORT}\n`);
-  
+
   const results = [];
-  
+
   for (const route of ROUTES) {
     try {
       const result = await checkSSR(route);
       results.push(result);
-      
+
       if (result.success) {
         console.log(`✅ ${route.padEnd(15)} - SSR is working!`);
         console.log(`   └─ Content Length: ${result.details.contentLength} bytes`);
@@ -95,10 +95,10 @@ async function verifyAllRoutes() {
   }
 
   console.log('\n' + '='.repeat(60) + '\n');
-  
+
   const successful = results.filter(r => r.success).length;
   const total = results.length;
-  
+
   if (successful === total) {
     console.log(`🎉 SUCCESS! All ${total} routes are server-side rendered!\n`);
     console.log('Your SSR configuration is working correctly.\n');
@@ -113,7 +113,7 @@ async function verifyAllRoutes() {
   console.log('2. Right-click → "View Page Source" (Ctrl+U)');
   console.log('3. Look for actual HTML content (not empty divs)');
   console.log('4. Check for meta tags in the <head> section\n');
-  
+
   console.log('📖 For detailed verification guide, see: SSR_VERIFICATION_GUIDE.md\n');
 }
 

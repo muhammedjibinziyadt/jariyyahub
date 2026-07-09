@@ -65,7 +65,6 @@ export default function Footer() {
                                 {[
                                     { label: "Home", href: "/" },
                                     { label: "Core Committee", href: "/core" },
-                                    { label: "Sub Wings", href: "/subwing" },
                                     { label: "Contact", href: "/contact" }
                                 ].map((item, i) => (
                                     <li key={i}>

@@ -6,15 +6,15 @@
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'EducationalOrganization',
-  name: 'Jariyya Hub Students Association',
+  name: 'Jariya Hub',
   alternateName: 'جارية هب',
-  url: 'https://jariyyahub.online',
-  logo: 'https://jariyyahub.online/logo.png',
-  description: 'Jariyya Hub Students Association at Jamia Nooriyya Arabiyya Pattikkad - Empowering students through Islamic education, cultural heritage, and community service since 1985.',
-  foundingDate: '1985',
+  url: 'https://jariyahub.online',
+  logo: 'https://jariyahub.online/logo.png',
+  description: 'Jariya Hub website is a doantion website',
+  foundingDate: '2026',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Faizabad, Pattikkad PO',
+    streetAddress: 'Pulpatta',
     addressLocality: 'Malappuram',
     addressRegion: 'Kerala',
     postalCode: '679325',
@@ -22,36 +22,36 @@ export const organizationSchema = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+91-98470-70200',
+    telephone: '+91-828010-2606',
     contactType: 'General Inquiries',
-    email: 'jamianooriya@gmail.com',
+    email: 'jariyahu@gmail.com',
     availableLanguage: ['English', 'Malayalam', 'Arabic'],
   },
   sameAs: [
     // Add your social media URLs here when available
-    'https://facebook.com/jariyyahub',
-    'https://instagram.com/jariyyahub',
-    'https://twitter.com/jariyyahub',
+    'https://facebook.com/jariyahub',
+    'https://instagram.com/jariyahub',
+    'https://twitter.com/jariyahub',
   ],
   parentOrganization: {
     '@type': 'EducationalOrganization',
-    name: 'Jamia Nooriyya Arabiyya Pattikkad',
+    name: 'Jariya Hub',
   },
 }
 
 export const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Jariyya Hub Students Association',
-  url: 'https://jariyyahub.online',
-  description: 'Official website of Jariyya Hub Students Association',
+  name: 'Jariya Hub',
+  url: 'https://jariyahub.online',
+  description: 'Official website of Jariya Hub',
   publisher: {
     '@type': 'Organization',
-    name: 'Jariyya Hub Students Association',
+    name: 'Jariya Hub',
   },
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://jariyyahub.online/search?q={search_term_string}',
+    target: 'https://jariyahub.online/search?q={search_term_string}',
     'query-input': 'required name=search_term_string',
   },
 }
@@ -85,7 +85,7 @@ export const eventSchema = (event: {
     name: event.location,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Faizabad, Pattikkad PO',
+      streetAddress: 'Pulpatta',
       addressLocality: 'Malappuram',
       addressRegion: 'Kerala',
       postalCode: '679325',
@@ -94,8 +94,8 @@ export const eventSchema = (event: {
   },
   organizer: {
     '@type': 'Organization',
-    name: 'Jariyya Hub Students Association',
-    url: 'https://jariyyahub.com',
+    name: 'Jariyya Hub',
+    url: 'https://jariyahub.com',
   },
 })
 
@@ -117,8 +117,8 @@ export const personSchema = (person: {
   telephone: person.telephone,
   affiliation: {
     '@type': 'Organization',
-    name: 'Jariyya Hub Students Association',
-    url: 'https://jariyyahub.online',
+    name: 'Jariya Hub',
+    url: 'https://jariyahub.online',
   },
 })
 

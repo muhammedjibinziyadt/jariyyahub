@@ -1,4 +1,4 @@
-﻿import type { Metadata, Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -6,12 +6,10 @@ import Navbar from "@/components/navbar";
 import NeonCursor from "@/components/NeonCursor";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Footer from "@/components/ui/footer";
-import AnnouncementBar from '@/components/AnnouncementBar';
 import Header from "@/components/header";
 import { organizationSchema, websiteSchema } from "@/lib/structured-data";
 import { Suspense } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
-import { AnnouncementProvider } from "@/lib/providers/announcement-provider";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -178,14 +176,11 @@ export default function RootLayout({
             <GoogleAnalytics />
           </Suspense>
           <TooltipProvider delayDuration={0}>
-            <AnnouncementProvider>
-              <NeonCursor />
-              <AnnouncementBar />
-              <Header />
-              {children}
-              <Footer />
-              <Navbar />
-            </AnnouncementProvider>
+            <NeonCursor />
+            <Header />
+            {children}
+            <Footer />
+            <Navbar />
           </TooltipProvider>
         </ThemeProvider>
       </body>

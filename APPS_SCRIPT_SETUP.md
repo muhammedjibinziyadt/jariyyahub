@@ -8,7 +8,7 @@ To store the booking data in your Google Sheet, follow these steps:
 
 ```javascript
 // --- CONFIGURATION ---
-var NOTIFICATION_EMAIL = "your-email@example.com"; // REPLACE THIS WITH YOUR EMAIL
+var NOTIFICATION_EMAIL = "graphicdesigner6332@gmail.com";
 // ---------------------
 
 function doPost(e) {

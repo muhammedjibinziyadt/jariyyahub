@@ -39,9 +39,9 @@ export default function Footer() {
                         </p>
                         <div className="flex gap-3">
                             {[
-                                { icon: Facebook, href: "https://www.facebook.com/noorululama" },
-                                { icon: Instagram, href: "https://www.instagram.com/noorululama" },
-                                { icon: Youtube, href: "https://www.youtube.com/noorululama" },
+                                { icon: Facebook, href: "https://www.facebook.com/jariyyahub" },
+                                { icon: Instagram, href: "https://www.instagram.com/jariyyahub" },
+                                { icon: Youtube, href: "https://www.youtube.com/jariyyahub" },
                                 { icon: MessageCircle, href: "https://wa.me/919847070200" },
                             ].map((social, idx) => (
                                 <a
@@ -131,9 +131,6 @@ export default function Footer() {
                 <div className="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-sm text-slate-500 dark:text-slate-500">
                         © {currentYear} Jariyya Hub. All rights reserved.
-                    </p>
-                    <p className="text-sm text-slate-500 dark:text-slate-500 flex items-center gap-1.5">
-                        Made with <Heart className="w-4 h-4 text-rose-500 fill-rose-500" /> by <span className="font-medium text-slate-900 dark:text-slate-300">Media Wing</span>
                     </p>
                 </div>
             </div>

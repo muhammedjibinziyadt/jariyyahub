@@ -24,7 +24,7 @@ const LiveWebsitePreview = () => {
             Official Live Platform
           </span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight">
-            JAWHARATHUL <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600 font-bold">ULOOM</span>
+            JAWHARATHUL <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600 font-bold">ULOOM DARS</span>
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto">
             Experience our official website and explore admissions, programs, and updates in real-time.

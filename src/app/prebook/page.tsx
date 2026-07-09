@@ -826,7 +826,7 @@ const AlMuneerBookingPage = () => {
                                             color: '#94a3b8'
                                         }}>
                                             <p style={{ margin: 0 }}>Thank you for supporting Al-Muneer.</p>
-                                            <p style={{ margin: '4px 0 0 0', fontFamily: 'monospace', fontSize: '12px', opacity: 0.5 }}>Generated via noorululama.com</p>
+                                            <p style={{ margin: '4px 0 0 0', fontFamily: 'monospace', fontSize: '12px', opacity: 0.5 }}>Generated via jariyyahub.com</p>
                                         </div>
                                     </div>
                                 </div>

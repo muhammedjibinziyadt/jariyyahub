@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { ReactNode } from "react";
 import { breadcrumbSchema } from "@/lib/structured-data";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://noorululama.org';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://jariyyahub.online';
 
 export const metadata: Metadata = {
   title: "Official Website | Jariyya Hub",

@@ -36,7 +36,7 @@ function checkSSR(path) {
       res.on('end', () => {
         // Check if response contains actual HTML content
         const hasHtml = data.includes('<!DOCTYPE html>');
-        const hasContent = data.includes('Noorul Ulama') || data.includes('نور العلماء');
+        const hasContent = data.includes('Jariyya Hub') || data.includes('نور العلماء');
         const hasMetaTags = data.includes('<meta name="description"');
         const hasTitle = data.includes('<title>');
         

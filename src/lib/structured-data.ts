@@ -7,9 +7,9 @@ export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'EducationalOrganization',
   name: 'Jariyya Hub Students Association',
-  alternateName: 'نور العلماء',
-  url: 'https://noorululama.org',
-  logo: 'https://noorululama.org/logo.png',
+  alternateName: 'جارية هب',
+  url: 'https://jariyyahub.online',
+  logo: 'https://jariyyahub.online/logo.png',
   description: 'Jariyya Hub Students Association at Jamia Nooriyya Arabiyya Pattikkad - Empowering students through Islamic education, cultural heritage, and community service since 1985.',
   foundingDate: '1985',
   address: {
@@ -29,9 +29,9 @@ export const organizationSchema = {
   },
   sameAs: [
     // Add your social media URLs here when available
-    'https://facebook.com/noorululama',
-    'https://instagram.com/noorululama',
-    'https://twitter.com/noorululama',
+    'https://facebook.com/jariyyahub',
+    'https://instagram.com/jariyyahub',
+    'https://twitter.com/jariyyahub',
   ],
   parentOrganization: {
     '@type': 'EducationalOrganization',
@@ -43,7 +43,7 @@ export const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Jariyya Hub Students Association',
-  url: 'https://noorululama.org',
+  url: 'https://jariyyahub.online',
   description: 'Official website of Jariyya Hub Students Association',
   publisher: {
     '@type': 'Organization',
@@ -51,7 +51,7 @@ export const websiteSchema = {
   },
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://noorululama.org/search?q={search_term_string}',
+    target: 'https://jariyyahub.online/search?q={search_term_string}',
     'query-input': 'required name=search_term_string',
   },
 }
@@ -95,7 +95,7 @@ export const eventSchema = (event: {
   organizer: {
     '@type': 'Organization',
     name: 'Jariyya Hub Students Association',
-    url: 'https://noorululama.com',
+    url: 'https://jariyyahub.com',
   },
 })
 
@@ -118,7 +118,7 @@ export const personSchema = (person: {
   affiliation: {
     '@type': 'Organization',
     name: 'Jariyya Hub Students Association',
-    url: 'https://noorululama.org',
+    url: 'https://jariyyahub.online',
   },
 })
 

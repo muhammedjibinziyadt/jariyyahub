@@ -27,7 +27,7 @@ const playfair = Playfair_Display({
   preload: true,
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://noorululama.org';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://jariyahub.online';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -43,13 +43,13 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Jariyya Hub - Islamic Excellence & Education | Jamia Nooriyya Arabiyya",
-    template: "%s | Jariyya Hub",
+    default: "Jariya Hub - The official fundraising website of jawharathul uloom dars.",
+    template: "%s | Jariya Hub",
   },
-  description: "Jariyya Hub Students Association at Jamia Nooriyya Arabiyya Pattikkad - Empowering students through Islamic education, cultural heritage, and community service since 1985.",
+  description: "Jariya Hub - The official fundraising website of jawharathul uloom dars. Your gateway to making meaningful contributions to the educational and spiritual growth of students.",
   keywords: [
-    "Jariyya Hub",
-    "Jamia Nooriyya Arabiyya",
+    "Jariya Hub",
+    "jawharathul uloom dars",
     "Islamic Education",
     "Pattikkad",
     "Student Association",
@@ -59,14 +59,14 @@ export const metadata: Metadata = {
     "Islamic Scholarship",
     "Student Organization",
     "Community Service",
-    "نور العلماء",
+    "fund raising",
   ],
   authors: [
-    { name: "Jariyya Hub Students Association" },
-    { name: "Jamia Nooriyya Arabiyya Pattikkad" },
+    { name: "Jariya Hub" },
+    { name: "jawharathul uloom dars" },
   ],
-  creator: "Jariyya Hub Students Association",
-  publisher: "Jariyya Hub Students Association",
+  creator: "Jariya Hub",
+  publisher: "jawharathul uloom dars",
   formatDetection: {
     email: true,
     address: true,
@@ -79,29 +79,29 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    title: "Jariyya Hub - Islamic Excellence & Education",
-    description: "Empowering students through Islamic knowledge, cultural preservation, and community service at Jamia Nooriyya Arabiyya Pattikkad.",
-    siteName: "Jariyya Hub Students Association",
+    title: "Jariya Hub - The official fundraising website of jawharathul uloom dars.",
+    description: "Jariya Hub - The official fundraising website of jawharathul uloom dars. Your gateway to making meaningful contributions to the educational and spiritual growth of students.",
+    siteName: "Jariya Hub",
     images: [
       {
         url: `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "Jariyya Hub Students Association",
+        alt: "Jariya Hub",
       },
       {
         url: `${siteUrl}/og-image-square.jpg`,
         width: 1200,
         height: 1200,
-        alt: "Jariyya Hub Students Association",
+        alt: "jariya Hub",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jariyya Hub - Islamic Excellence & Education",
+    title: "Jariya Hub - The official fundraising website of jawharathul uloom dars.",
     description: "Empowering students through Islamic knowledge and community service",
-    creator: "@noorululama",
+    creator: "@jariyahub",
     images: [`${siteUrl}/twitter-image.jpg`],
   },
   robots: {

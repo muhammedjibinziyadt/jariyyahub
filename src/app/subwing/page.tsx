@@ -3,17 +3,17 @@ import React from 'react'
 import { Metadata } from 'next'
 import { breadcrumbSchema } from '@/lib/structured-data'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://noorululama.org';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://jariyyahub.online';
 
 export const metadata: Metadata = {
   title: "Sub Wings",
-  description: "Explore the diverse sub wings of Noorul Ulama - specialized programs dedicated to Islamic education, cultural activities, social welfare, and student development.",
-  keywords: ["sub wings", "programs", "Islamic education", "cultural activities", "student programs", "Noorul Ulama"],
+  description: "Explore the diverse sub wings of Jariyya Hub - specialized programs dedicated to Islamic education, cultural activities, social welfare, and student development.",
+  keywords: ["sub wings", "programs", "Islamic education", "cultural activities", "student programs", "Jariyya Hub"],
   alternates: {
     canonical: `${siteUrl}/subwing`,
   },
   openGraph: {
-    title: "Sub Wings | Noorul Ulama Educational Programs",
+    title: "Sub Wings | Jariyya Hub Educational Programs",
     description: "Discover our specialized programs and activities for holistic student development",
     url: `${siteUrl}/subwing`,
     type: "website",
@@ -22,13 +22,13 @@ export const metadata: Metadata = {
         url: `${siteUrl}/og-subwing.jpg`,
         width: 1200,
         height: 630,
-        alt: "Noorul Ulama Sub Wings",
+        alt: "Jariyya Hub Sub Wings",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sub Wings | Noorul Ulama",
+    title: "Sub Wings | Jariyya Hub",
     description: "Explore our diverse educational and service programs",
   },
 };

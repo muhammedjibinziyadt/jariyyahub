@@ -35,7 +35,7 @@ export default function Footer() {
                             </div>
                         </Link>
                         <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm max-w-sm">
-                            Jariyyah Hub is a charitable organization working for the upliftment of poor and needy people in the society
+                            നിങ്ങളുടെ ചെറിയ സഹായം ഒരു വിദ്യാർത്ഥിയുടെ ഭാവിയെ പ്രകാശിപ്പിക്കും. ഇന്ന് ചേർന്നാൽ ഒരു സമൂഹത്തിന്റെ നാളെയുടെ അഭിവൃദ്ധിയുടെ വെളിച്ചമാകും.
                         </p>
                         <div className="flex gap-3">
                             {[

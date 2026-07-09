@@ -50,7 +50,7 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-white dark:bg-slate-900/60 backdrop-blur-md border border-slate-100 dark:border-slate-800/80 hover:border-violet-500/40 hover:shadow-2xl shadow-lg rounded-3xl overflow-hidden flex flex-col justify-between h-full transition-all duration-300 group hover:-translate-y-1"
+                className="w-full max-w-[350px] mx-auto md:max-w-none bg-white dark:bg-slate-900/60 backdrop-blur-md border border-slate-100 dark:border-slate-800/80 hover:border-violet-500/40 hover:shadow-2xl shadow-lg rounded-3xl overflow-hidden flex flex-col justify-between h-full transition-all duration-300 group hover:-translate-y-1"
               >
                 {/* Image Container - Aspect 4/3 for larger visual weight */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100 dark:bg-slate-950">
@@ -64,16 +64,16 @@ const AboutSection = () => {
                   <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors" />
                 </div>
 
-                {/* Content Section - Increased padding & text sizes */}
-                <div className="p-8 md:p-10 flex flex-col flex-grow justify-between">
+                {/* Content Section - Balanced padding & text sizes */}
+                <div className="p-6 md:p-8 flex flex-col flex-grow justify-between">
                   <div>
                     {/* Title */}
-                    <h3 className="text-2xl font-black text-slate-900 dark:text-white font-malayalam mb-4 tracking-wide group-hover:text-violet-600 transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white font-malayalam mb-3 tracking-wide group-hover:text-violet-600 transition-colors">
                       {card.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-base text-slate-600 dark:text-slate-400 font-malayalam leading-relaxed">
+                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 font-malayalam leading-relaxed">
                       {card.description}
                     </p>
                   </div>

@@ -132,13 +132,13 @@ const CTASection = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -15 }}
                     transition={{ duration: 0.4 }}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                    className="flex flex-wrap justify-center gap-6"
                   >
                     {videos.slice(0, 4).map((video) => (
                       <div
                         key={video._id}
                         onClick={() => setActiveVideo(video.youtubeId)}
-                        className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-emerald-500/40 transition-all duration-300 cursor-pointer shadow-xl flex flex-col h-full"
+                        className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-emerald-500/40 transition-all duration-300 cursor-pointer shadow-xl flex flex-col h-full w-full max-w-sm sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
                       >
                         {/* Video Thumbnail Wrapper */}
                         <div className="relative aspect-video w-full bg-slate-900 overflow-hidden">
@@ -185,13 +185,13 @@ const CTASection = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -15 }}
                     transition={{ duration: 0.4 }}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                    className="flex flex-wrap justify-center gap-6"
                   >
                     {photos.map((photo, idx) => (
                       <div
                         key={photo._id || idx}
                         onClick={() => setActivePhotoIdx(idx)}
-                        className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-white/10 cursor-pointer hover:border-emerald-500/40 transition-colors"
+                        className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-white/10 cursor-pointer hover:border-emerald-500/40 transition-colors w-full max-w-sm sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
                       >
                         <Image
                           src={photo.src}

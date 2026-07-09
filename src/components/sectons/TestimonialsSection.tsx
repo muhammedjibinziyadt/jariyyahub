@@ -69,10 +69,25 @@ const TestimonialsSection = () => {
                 transition={{ duration: 0.4 }}
                 className="text-center max-w-3xl px-6"
               >
-                <Quote className="w-12 h-12 mx-auto text-emerald-500/20 mb-8" />
-                <blockquote className="text-xl sm:text-2xl md:text-3xl font-light leading-relaxed text-slate-800 dark:text-slate-200 mb-10 whitespace-pre-line font-arabic-and-malayalam">
-                  {testimonials[currentIndex].quote}
-                </blockquote>
+                <div className="mb-10 space-y-8 select-none">
+                  {/* Arabic Section */}
+                  <div className="space-y-4" dir="rtl">
+                    <p className="text-lg sm:text-xl md:text-2xl font-arabic text-emerald-600 dark:text-emerald-400 font-medium">
+                      {testimonials[currentIndex].quote.split('\n\n')[0]}
+                    </p>
+                    <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-arabic leading-[1.25] text-slate-900 dark:text-white">
+                      {testimonials[currentIndex].quote.split('\n\n')[1]}
+                    </p>
+                  </div>
+                  
+                  {/* Divider */}
+                  <div className="w-16 h-[1px] bg-slate-200 dark:bg-slate-800 mx-auto" />
+
+                  {/* Malayalam Translation */}
+                  <p className="text-base sm:text-lg md:text-xl font-light leading-relaxed text-slate-600 dark:text-slate-400 font-malayalam whitespace-pre-line max-w-2xl mx-auto">
+                    {testimonials[currentIndex].quote.split('\n\n').slice(2).join('\n\n')}
+                  </p>
+                </div>
                 <div className="flex flex-col items-center gap-4">
                   <div className="w-16 h-16 relative rounded-full overflow-hidden bg-emerald-100">
                     <Image

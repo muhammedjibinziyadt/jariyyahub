@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
@@ -39,13 +39,13 @@ const HeroSection = () => {
       .catch(err => console.error('Failed to load settings:', err))
   }, [])
 
-  const percentage = settings.targetAmount > 0 
+  const percentage = settings.targetAmount > 0
     ? Math.min(100, Math.round((settings.raisedAmount / settings.targetAmount) * 100))
     : 0
 
   const notifications = [
-    "Admission Open 2025-26: Apply Now for Academic Excellence",
-    "Results Published: Check the Student Leaderboard for Latest Updates",
+    "വിദ്യാർത്ഥികൾക്ക് ഏറ്റവും നല്ല പഠന സൗകര്യങ്ങൾ ഒരുക്കുന്നു",
+    "",
     "New Course: Advanced Islamic Studies & Research Methodology",
     "Upcoming Event: Annual Islamic Conference 2025 - Register Early"
   ]
@@ -156,8 +156,8 @@ const HeroSection = () => {
                     പണിയുടെ പുരോഗതി
                   </h4>
                   <div className="w-full h-2.5 bg-slate-100 dark:bg-slate-800/80 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-gradient-to-r from-violet-500 to-purple-600 rounded-full" 
+                    <div
+                      className="h-full bg-gradient-to-r from-violet-500 to-purple-600 rounded-full"
                       style={{ width: `${percentage}%` }}
                     />
                   </div>

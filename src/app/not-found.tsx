@@ -109,7 +109,7 @@ export default function NotFound() {
         }
         
         .font-arabic {
-          font-family: 'Amiri', 'Noto Naskh Arabic', 'Times New Roman', serif;
+          font-family: 'Sakkal Majalla', 'Amiri', 'Noto Naskh Arabic', 'Times New Roman', serif;
         }
       `}</style>
     </div>

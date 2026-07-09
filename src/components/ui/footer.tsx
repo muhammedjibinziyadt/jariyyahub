@@ -34,7 +34,7 @@ export default function Footer() {
                                 </div>
                             </div>
                         </Link>
-                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm max-w-sm">
+                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm max-w-sm font-malayalam">
                             നിങ്ങളുടെ ചെറിയ സഹായം ഒരു വിദ്യാർത്ഥിയുടെ ഭാവിയെ പ്രകാശിപ്പിക്കും. ഇന്ന് ചേർന്നാൽ ഒരു സമൂഹത്തിന്റെ നാളെയുടെ അഭിവൃദ്ധിയുടെ വെളിച്ചമാകും.
                         </p>
                         <div className="flex gap-3">
@@ -42,7 +42,7 @@ export default function Footer() {
                                 { icon: Facebook, href: "https://www.facebook.com/jariyyahub" },
                                 { icon: Instagram, href: "https://www.instagram.com/jariyyahub" },
                                 { icon: Youtube, href: "https://www.youtube.com/jariyyahub" },
-                                { icon: MessageCircle, href: "https://wa.me/919847070200" },
+                                { icon: MessageCircle, href: "https://wa.me/919647070200" },
                             ].map((social, idx) => (
                                 <a
                                     key={idx}
@@ -94,7 +94,6 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Contact Info */}
                     <div className="lg:col-span-4 space-y-6">
                         <h4 className="font-bold text-slate-900 dark:text-white">Contact Us</h4>
                         <div className="space-y-4">
@@ -104,15 +103,15 @@ export default function Footer() {
                                 </div>
                                 <div className="text-sm">
                                     <p className="text-slate-900 dark:text-white font-medium">Jariya Hub</p>
-                                    <p className="text-slate-500 dark:text-slate-400 mt-1">Malappuram<br />, Kerala 679325</p>
+                                    <p className="text-slate-500 dark:text-slate-400 mt-1">Faizabad, Pattikkad PO<br />Malappuram, Kerala 679325</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-4">
                                 <div className="p-2.5 bg-emerald-50 dark:bg-slate-900 rounded-lg text-emerald-600">
                                     <Mail className="w-5 h-5" />
                                 </div>
-                                <a href="mailto:jariyahub@gmail.com" className="text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors">
-                                    jariyahub@gmail.com
+                                <a href="mailto:jamianooriya@gmail.com" className="text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors">
+                                    jamianooriya@gmail.com
                                 </a>
                             </div>
                             <div className="flex items-center gap-4">
@@ -120,7 +119,7 @@ export default function Footer() {
                                     <Phone className="w-5 h-5" />
                                 </div>
                                 <div className="text-sm text-slate-600 dark:text-slate-400">
-                                    +918281102606
+                                    +91 96470 70200
                                 </div>
                             </div>
                         </div>

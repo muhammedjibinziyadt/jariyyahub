@@ -70,7 +70,7 @@ const ContactSection = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Call Us",
-      details: ["+91 98470 70200", "+91 97473 99584"]
+      details: ["+91 96470 70200", "+91 97473 99581"]
     }
   ]
 

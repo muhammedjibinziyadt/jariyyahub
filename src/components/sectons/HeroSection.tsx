@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
@@ -171,8 +171,22 @@ const HeroSection = () => {
               <div className="hidden md:block w-[1px] h-14 border-l border-dashed border-border" />
               <div className="block md:hidden w-full h-[1px] border-t border-dashed border-border" />
 
-              {/* Right side (Goal) */}
-              <div className="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto">
+              {/* Right side (Goal & Raised Info) */}
+              <div className="flex flex-row items-center gap-6 md:gap-8 w-full md:w-auto justify-between md:justify-end">
+                {/* Raised Amount */}
+                <div className="text-left md:text-right space-y-0.5">
+                  <span className="text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 font-bold font-malayalam block">
+                    ലഭിച്ചത്
+                  </span>
+                  <h3 className="text-2xl font-black text-emerald-600 dark:text-emerald-500 tracking-wide">
+                    ₹{settings.raisedAmount.toLocaleString('en-IN')}
+                  </h3>
+                </div>
+
+                {/* Divider */}
+                <div className="w-[1px] h-8 bg-slate-200 dark:bg-slate-700/60 hidden sm:block" />
+
+                {/* Goal */}
                 <div className="text-left md:text-right space-y-0.5">
                   <span className="text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 font-bold font-malayalam block">
                     ലക്ഷ്യം
@@ -181,6 +195,7 @@ const HeroSection = () => {
                     ₹{settings.targetAmount.toLocaleString('en-IN')}
                   </h3>
                 </div>
+                
                 <div className="w-12 h-12 rounded-full bg-violet-100/60 dark:bg-violet-950/40 flex items-center justify-center text-violet-600 dark:text-violet-400 flex-shrink-0">
                   <Target className="w-6 h-6" />
                 </div>

@@ -1,68 +1,72 @@
 // src/components/sections/CTASection.tsx
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Mail, Play, X, Image as ImageIcon, Video, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Play, X, Image as ImageIcon, Video, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
 import Image from 'next/image'
+import axios from 'axios'
 
-// YouTube videos showcase (User can easily swap out these YouTube IDs)
-const videos = [
-  {
-    id: "1",
-    youtubeId: "co0cZ_624D0",
-    title: "Jawharathul Uloom Dars - Institutional Overview",
-    desc: "A brief look into our educational facilities, daily student activities, and dars learning environment."
-  },
-  {
-    id: "2",
-    youtubeId: "dQw4w9WgXcQ", // Standard placeholder ID
-    title: "Sadaqah Jariyah: Building the Future of Scholars",
-    desc: "Highlights from our charity initiatives, community outreach programs, and student support campaigns."
-  }
-]
+interface VideoItem {
+  _id: string;
+  youtubeId: string;
+  title: string;
+  desc?: string;
+  isActive: boolean;
+}
 
-// Local images in the repository representing organization activities
-const photos = [
-  { src: "/images/library-team.jpg", title: "Student Library Team", desc: "Our library team managing resources for Islamic academic research." },
-  { src: "/images/media-wing.jpg", title: "Media Wing Activities", desc: "Recording and documenting students' lectures and creative content." },
-  { src: "/images/samajam.jpeg", title: "Students Association Meeting", desc: "Gathering of members planning social work and community campaigns." },
-  { src: "/images/sargaposhini.jpg", title: "Linguistic & Cultural Club", desc: "Creative writing and language practice session in Arabic." },
-  { src: "/img/1.webp", title: "Islamic Campus Highlights", desc: "Overview of Jamia Nooriyya Arabiyya educational campus." },
-  { src: "/img/2.webp", title: "Daily Dars Classroom", desc: "Students engaged in traditional Islamic law and theology classes." }
-]
+interface PhotoItem {
+  _id: string;
+  src: string;
+  title: string;
+  desc?: string;
+  isActive: boolean;
+}
 
 const CTASection = () => {
   const [activeTab, setActiveTab] = useState<'videos' | 'photos'>('videos')
+  const [videos, setVideos] = useState<VideoItem[]>([])
+  const [photos, setPhotos] = useState<PhotoItem[]>([])
+  const [loading, setLoading] = useState(true)
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
   const [activePhotoIdx, setActivePhotoIdx] = useState<number | null>(null)
 
-  const [email, setEmail] = useState('')
-  const [isSubscribed, setIsSubscribed] = useState(false)
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (email) {
-      setIsSubscribed(true)
-      setEmail('')
-      setTimeout(() => setIsSubscribed(false), 3000)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [videosRes, photosRes] = await Promise.all([
+          axios.get('/api/media-videos'),
+          axios.get('/api/media-images')
+        ])
+        if (videosRes.data.success) {
+          setVideos(videosRes.data.data)
+        }
+        if (photosRes.data.success) {
+          setPhotos(photosRes.data.data)
+        }
+      } catch (err) {
+        console.error('Failed to load media:', err)
+      } finally {
+        setLoading(false)
+      }
     }
-  }
+    fetchData()
+  }, [])
 
   const handleNextPhoto = () => {
-    if (activePhotoIdx !== null) {
+    if (activePhotoIdx !== null && photos.length > 0) {
       setActivePhotoIdx((activePhotoIdx + 1) % photos.length)
     }
   }
 
   const handlePrevPhoto = () => {
-    if (activePhotoIdx !== null) {
+    if (activePhotoIdx !== null && photos.length > 0) {
       setActivePhotoIdx((activePhotoIdx - 1 + photos.length) % photos.length)
     }
   }
 
   return (
-    <section className="relative py-24 sm:py-32 bg-slate-950 text-white overflow-hidden border-t border-slate-900">
+    <section className="relative py-24 bg-slate-950 text-white overflow-hidden border-t border-slate-900">
 
       {/* Background Orbs */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -71,7 +75,7 @@ const CTASection = () => {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="max-w-6xl mx-auto space-y-12">
+        <div className="max-w-7xl mx-auto space-y-12">
 
           {/* Section Header with Tabs */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
@@ -113,85 +117,106 @@ const CTASection = () => {
           </div>
 
           {/* Grid Content */}
-          <div className="min-h-[350px]">
-            <AnimatePresence mode="wait">
-              {activeTab === 'videos' ? (
-                <motion.div
-                  key="videos-grid"
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.4 }}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-8"
-                >
-                  {videos.map((video) => (
-                    <div
-                      key={video.id}
-                      onClick={() => setActiveVideo(video.youtubeId)}
-                      className="group bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-emerald-500/40 transition-all duration-300 cursor-pointer shadow-xl flex flex-col h-full"
-                    >
-                      {/* Video Thumbnail Wrapper */}
-                      <div className="relative aspect-video w-full bg-slate-900 overflow-hidden">
-                        <Image
-                          src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
-                          alt={video.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
-                          unoptimized
-                        />
-                        {/* Play button overlay */}
-                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors flex items-center justify-center">
-                          <div className="w-16 h-16 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300">
-                            <Play className="w-6 h-6 fill-current translate-x-0.5" />
+          <div className="min-h-[300px]">
+            {loading ? (
+              <div className="flex items-center justify-center py-20 text-slate-400 gap-2">
+                <Loader2 className="w-6 h-6 animate-spin text-emerald-500" />
+                <span>Loading media...</span>
+              </div>
+            ) : (
+              <AnimatePresence mode="wait">
+                {activeTab === 'videos' ? (
+                  <motion.div
+                    key="videos-grid"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.4 }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                  >
+                    {videos.slice(0, 4).map((video) => (
+                      <div
+                        key={video._id}
+                        onClick={() => setActiveVideo(video.youtubeId)}
+                        className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-emerald-500/40 transition-all duration-300 cursor-pointer shadow-xl flex flex-col h-full"
+                      >
+                        {/* Video Thumbnail Wrapper */}
+                        <div className="relative aspect-video w-full bg-slate-900 overflow-hidden">
+                          <Image
+                            src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                            alt={video.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+                            unoptimized
+                          />
+                          {/* Play button overlay */}
+                          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors flex items-center justify-center">
+                            <div className="w-12 h-12 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300">
+                              <Play className="w-5 h-5 fill-current translate-x-0.5" />
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Video Meta */}
+                        <div className="p-4 space-y-1.5 flex-grow flex flex-col justify-between">
+                          <div className="space-y-1">
+                            <h3 className="font-bold text-sm text-slate-100 group-hover:text-emerald-400 transition-colors line-clamp-1">
+                              {video.title}
+                            </h3>
+                            {video.desc && (
+                              <p className="text-xs text-slate-400 font-light leading-relaxed line-clamp-2">
+                                {video.desc}
+                              </p>
+                            )}
                           </div>
                         </div>
                       </div>
-
-                      {/* Video Meta */}
-                      <div className="p-6 space-y-2 flex-grow flex flex-col justify-between">
-                        <div className="space-y-2">
-                          <h3 className="font-bold text-lg text-slate-100 group-hover:text-emerald-400 transition-colors line-clamp-1">
-                            {video.title}
-                          </h3>
-                          <p className="text-sm text-slate-400 font-light leading-relaxed line-clamp-2">
-                            {video.desc}
-                          </p>
+                    ))}
+                    {videos.length === 0 && (
+                      <div className="col-span-full py-16 text-center text-slate-500 text-sm">
+                        No videos available.
+                      </div>
+                    )}
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="photos-grid"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.4 }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                  >
+                    {photos.map((photo, idx) => (
+                      <div
+                        key={photo._id || idx}
+                        onClick={() => setActivePhotoIdx(idx)}
+                        className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-white/10 cursor-pointer hover:border-emerald-500/40 transition-colors"
+                      >
+                        <Image
+                          src={photo.src}
+                          alt={photo.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        {/* Hover Info Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                          <h4 className="font-bold text-sm text-white">{photo.title}</h4>
+                          {photo.desc && (
+                            <p className="text-xs text-slate-300 line-clamp-2 font-light mt-1">{photo.desc}</p>
+                          )}
                         </div>
                       </div>
-                    </div>
-                  ))}
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="photos-grid"
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.4 }}
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
-                  {photos.map((photo, idx) => (
-                    <div
-                      key={idx}
-                      onClick={() => setActivePhotoIdx(idx)}
-                      className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-white/10 cursor-pointer hover:border-emerald-500/40 transition-colors"
-                    >
-                      <Image
-                        src={photo.src}
-                        alt={photo.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      {/* Hover Info Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-                        <h4 className="font-bold text-sm text-white">{photo.title}</h4>
-                        <p className="text-xs text-slate-300 line-clamp-2 font-light mt-1">{photo.desc}</p>
+                    ))}
+                    {photos.length === 0 && (
+                      <div className="col-span-full py-16 text-center text-slate-500 text-sm">
+                        No photos available.
                       </div>
-                    </div>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            )}
           </div>
 
           {/* Lightbox / Video Modal */}
@@ -228,7 +253,7 @@ const CTASection = () => {
             )}
 
             {/* Photo Lightbox */}
-            {activePhotoIdx !== null && (
+            {activePhotoIdx !== null && photos.length > 0 && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -273,7 +298,9 @@ const CTASection = () => {
                   {/* Meta Details */}
                   <div className="text-center mt-4 max-w-2xl px-6">
                     <h3 className="font-bold text-lg text-white">{photos[activePhotoIdx].title}</h3>
-                    <p className="text-sm text-slate-300 font-light mt-1">{photos[activePhotoIdx].desc}</p>
+                    {photos[activePhotoIdx].desc && (
+                      <p className="text-sm text-slate-300 font-light mt-1">{photos[activePhotoIdx].desc}</p>
+                    )}
                     <span className="text-xs text-slate-500 mt-2 block">
                       {activePhotoIdx + 1} of {photos.length}
                     </span>
@@ -282,40 +309,6 @@ const CTASection = () => {
               </motion.div>
             )}
           </AnimatePresence>
-
-          {/* Newsletter Form */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="pt-16 max-w-lg mx-auto text-center border-t border-white/5"
-          >
-            <div className="flex items-center gap-2 justify-center mb-4 text-xs font-semibold tracking-widest uppercase text-slate-500">
-              <Mail className="w-4.5 h-4.5 text-emerald-500" />
-              <span>Subscribe to Updates</span>
-            </div>
-
-            <form onSubmit={handleSubscribe} className="relative">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
-                className="w-full px-6 py-4 rounded-full bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all font-light text-sm"
-                required
-              />
-              <button
-                type="submit"
-                className="absolute right-2 top-2 bottom-2 px-6 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-medium transition-colors text-sm flex items-center gap-2"
-              >
-                Subscribe
-              </button>
-            </form>
-            {isSubscribed && (
-              <p className="mt-4 text-emerald-400 text-sm">Thank you for subscribing!</p>
-            )}
-          </motion.div>
 
         </div>
       </div>

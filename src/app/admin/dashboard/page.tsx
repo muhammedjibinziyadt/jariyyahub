@@ -2,15 +2,16 @@
 'use client';
 
 import { useState } from 'react';
-import { LogOut, Activity, Megaphone, Image as ImageIcon, Home as HomeIcon, LayoutDashboard } from 'lucide-react';
+import { LogOut, Activity, Megaphone, Image as ImageIcon, Home as HomeIcon, LayoutDashboard, Video } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import AnnouncementManager from '@/components/admin/AnnouncementManager';
 import BannerManager from '@/components/admin/BannerManager';
 import DashboardOverview from '@/components/admin/DashboardOverview';
+import MediaManager from '@/components/admin/MediaManager';
 
 export default function AdminDashboard() {
-    const [activeTab, setActiveTab] = useState<'overview' | 'announcements' | 'banners'>('overview');
+    const [activeTab, setActiveTab] = useState<'overview' | 'announcements' | 'banners' | 'media'>('overview');
     const router = useRouter();
 
     const handleLogout = () => {
@@ -61,6 +62,16 @@ export default function AdminDashboard() {
                                 <ImageIcon className="w-4 h-4" />
                                 Banners
                             </button>
+                            <button
+                                onClick={() => setActiveTab('media')}
+                                className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-sm transition-all ${activeTab === 'media'
+                                    ? 'bg-slate-800 text-white shadow-lg'
+                                    : 'text-slate-500 hover:text-slate-300'
+                                    }`}
+                            >
+                                <Video className="w-4 h-4" />
+                                Media Gallery
+                            </button>
                         </div>
                         <button onClick={handleLogout} className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
                             <LogOut className="w-4 h-4" /> Logout
@@ -78,6 +89,9 @@ export default function AdminDashboard() {
                 )}
                 {activeTab === 'banners' && (
                     <BannerManager />
+                )}
+                {activeTab === 'media' && (
+                    <MediaManager />
                 )}
             </main>
         </div>
